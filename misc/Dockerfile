@@ -1,5 +1,8 @@
+# Build sample
 # docker build --tag myimage:1
-# docker run -i -t --name dev myimage:1 /bin/bash
+
+# Run sample
+# docker run -i -t --name dev -v /home/seunghoryu/dev/golang:/root/go myimage:1 /bin/bash
 FROM centos:7
 
 # update centos

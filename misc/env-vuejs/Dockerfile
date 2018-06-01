@@ -9,15 +9,14 @@ FROM centos:7
 RUN yum -y update kernel
 RUN yum -y update
 
-# Install npm
-RUN yum -y install epel-release
-RUN yum -y install npm
+# Install nodejs 8
+# RUN yum -y install epel-release
+RUN curl -sL https://rpm.nodesource.com/setup_8.x | bash -
+RUN yum -y install nodejs
 
-# Install vuejs
+RUN yum -y install git
 RUN npm install vue
 RUN npm install vue-cli -g
-
-RUN yum clean all
 
 # volume
 RUN mkdir /root/vuejs

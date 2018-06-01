@@ -6,10 +6,8 @@
 FROM centos:7
 
 # update centos
-RUN yum -y update kernel
 RUN yum -y update
 RUN yum -y install wget
-RUN yum clean all
 
 # volume
 RUN mkdir /root/go

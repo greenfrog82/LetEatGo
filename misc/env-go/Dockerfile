@@ -11,7 +11,6 @@ RUN yum -y install wget
 
 # volume
 RUN mkdir /root/go
-VOLUME ["/root/go"]
 
 # install golang
 RUN wget -nv https://dl.google.com/go/go1.10.2.linux-amd64.tar.gz

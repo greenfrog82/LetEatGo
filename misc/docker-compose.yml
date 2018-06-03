@@ -1,0 +1,51 @@
+version: "2"
+services:
+  go:
+    build:
+      context: .
+      dockerfile: ./env-go/Dockerfile
+    stdin_open: true
+    tty: true
+    volumes:
+      - ../go:/root/go
+    networks:
+      - my-net
+
+  vuejs:
+    build:
+      context: .
+      dockerfile: ./env-vuejs/Dockerfile
+    stdin_open: true
+    tty: true
+    volumes:
+      - ../vuejs:/root/vuejs
+    networks:
+      - my-net
+
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_DB=leteatgo
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=1234qwer
+    ports:
+      - "5432:5432"
+    networks:
+      - my-net
+
+  pgadmin4:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@foo.com
+      - PGADMIN_DEFAULT_PASSWORD=!@#$QWER
+    ports:
+      - "5555:80"
+    depends_on:
+      - postgres
+    networks:
+      - my-net
+
+networks:
+  my-net:
+    driver: bridge
+

@@ -15,5 +15,4 @@ RUN npm install vue-cli -g
 
 # volume
 RUN mkdir /root/vuejs
-VOLUME ["/root/vuejs"]
 

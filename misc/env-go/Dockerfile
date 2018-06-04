@@ -8,6 +8,7 @@ FROM centos:7
 # update centos
 RUN yum -y update
 RUN yum -y install wget
+RUN yum -y install git
 
 # volume
 RUN mkdir /root/go
@@ -18,3 +19,6 @@ RUN tar -C /usr/local -xf go1.10.2.linux-amd64.tar.gz
 ENV GOPATH /root/go
 ENV PATH $PATH:/usr/local/go/bin
 
+# install gin gonic
+WORKDIR /root/go
+RUN go get github.com/gin-gonic/gin

@@ -9,7 +9,9 @@ services:
     volumes:
       - ../go:/root/go
     networks:
-      - my-net
+      my-net:
+        aliases:
+          - backend
 
   vuejs:
     build:
@@ -27,7 +29,9 @@ services:
     environment:
       - POSTGRES_DB=leteatgo
       - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=1234qwer
+      - POSTGRES_PASSWORD=qwer1234
+    volumes:
+      - ../postgres:/var/lib/postgresql
     ports:
       - "5432:5432"
     networks:
@@ -37,7 +41,7 @@ services:
     image: dpage/pgadmin4
     environment:
       - PGADMIN_DEFAULT_EMAIL=admin@foo.com
-      - PGADMIN_DEFAULT_PASSWORD=!@#$QWER
+      - PGADMIN_DEFAULT_PASSWORD=qwer1234
     ports:
       - "5555:80"
     depends_on:

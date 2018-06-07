@@ -1,0 +1,57 @@
+version: "2"
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: ./env-backend/Dockerfile
+    stdin_open: true
+    tty: true
+    ports:
+      - 7000:7000
+    volumes:
+      - ../src/backend:/develop
+    working_dir: /develop
+    networks:
+      my-net:
+        aliases: # 별명. 참고로하자.
+          - backend2
+  frontend:
+    build:
+      context: .
+      dockerfile: ./env-frontend/Dockerfile
+    stdin_open: true
+    tty: true
+    ports:
+      - 7001:7001
+    volumes:
+      - ../src/frontend:/develop
+    working_dir: /develop
+    networks:
+      - my-net
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_DB=leteatgo
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=qwer1234
+    volumes:
+      - ../postgres:/var/lib/postgresql
+    ports:
+      - "9432:5432"
+    networks:
+      - my-net
+  pgadmin4:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@foo.com
+      - PGADMIN_DEFAULT_PASSWORD=qwer1234
+    ports:
+      - "5555:80"
+    depends_on:
+      - postgres
+    networks:
+      - my-net
+networks:
+  my-net:
+    driver: bridge
+

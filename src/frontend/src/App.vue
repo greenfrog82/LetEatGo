@@ -1,23 +1,39 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <v-app light>
+      <v-toolabr class="white">
+        <v-toolbar-title v-text=title></v-toolbar-title>
+      </v-toolabr>
+      <v-content>
+        <router-view/>
+      </v-content>
+      <v-footer height="auto">
+      <v-card flat tile class="flex">
+        <v-card-title class="teal white--text">
+          <strong class="subheading">Get connected with us on social networks!</strong>
+          <v-spacer></v-spacer>
+          <v-btn
+            icon
+            dark
+            class="mx-3"
+          >
+            <v-icon size="24px">fab fa-github</v-icon>
+          </v-btn>
+        </v-card-title>
+      </v-card>
+    </v-footer>
+    </v-app>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data: () => ({
+    title: 'LetEatGo'
+  })
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>

@@ -5,10 +5,13 @@ import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
 // [Begin] https://vuetifyjs.com/en/getting-started/quick-start
+// CSS of Vuetify.js
 import 'vuetify/dist/vuetify.min.css'
+// Material Design CSS
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 // [End]
 // [Begin] https://fontawesome.com/how-to-use/use-with-node-js
+// Using 'Font Awesome'
 import fontawesome from '@fortawesome/fontawesome'
 import faUser from '@fortawesome/fontawesome-free-solid/faUser'
 import faCircle from '@fortawesome/fontawesome-free-regular/faCircle'

@@ -4,6 +4,7 @@ FROM centos:7
 RUN yum -y update
 RUN yum -y install wget
 RUN yum -y install git
+RUN yum -y install vim
 
 # install golang
 RUN wget -nv https://dl.google.com/go/go1.10.2.linux-amd64.tar.gz

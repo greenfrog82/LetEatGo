@@ -18,3 +18,5 @@ ENV PATH $PATH:/usr/local/go/bin
 
 # install gin gonic
 RUN go get github.com/gin-gonic/gin
+# gin - https://github.com/codegangsta/gin, This is for hot re-loading go webserver
+RUN go get github.com/codegangsta/gin

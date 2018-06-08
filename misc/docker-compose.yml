@@ -10,7 +10,6 @@ services:
       - 7000:7000
     volumes:
       - ../src/backend:/develop
-    working_dir: /develop
     networks:
       my-net:
         aliases: # 별명. 참고로하자.

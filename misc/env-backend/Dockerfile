@@ -5,10 +5,15 @@ RUN yum -y update
 RUN yum -y install wget
 RUN yum -y install git
 
+WORKDIR /develop
+
 # install golang
 RUN wget -nv https://dl.google.com/go/go1.10.2.linux-amd64.tar.gz
 RUN tar -C /usr/local -xf go1.10.2.linux-amd64.tar.gz
-ENV GOPATH /root/go
+
+# Set Environment for go-lang. 
+# Note that these environments have to be set before using go get command.
+ENV GOPATH=/develop/biz
 ENV PATH $PATH:/usr/local/go/bin
 
 # install gin gonic

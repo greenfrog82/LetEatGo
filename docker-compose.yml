@@ -1,9 +1,9 @@
 version: "2"
 services:
-  backend:
+  backend-auth:
     build:
       context: .
-      dockerfile: ./env-backend/Dockerfile
+      dockerfile: ./misc/env-backend/Dockerfile
     stdin_open: true
     tty: true
     ports:
@@ -14,14 +14,26 @@ services:
       my-net:
         aliases: # 별명. 참고로하자.
           - backend2
-  frontend:
+  backend-biz:
     build:
       context: .
-      dockerfile: ./env-frontend/Dockerfile
+      dockerfile: ./misc/env-backend/Dockerfile
     stdin_open: true
     tty: true
     ports:
       - 7001:7001
+    volumes:
+      - ../src/backend:/develop
+    networks:
+      - my-net
+  frontend:
+    build:
+      context: .
+      dockerfile: ./misc/env-frontend/Dockerfile
+    stdin_open: true
+    tty: true
+    ports:
+      - 7002:7002
     volumes:
       - ../src/frontend:/develop
     working_dir: /develop

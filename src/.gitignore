@@ -1,0 +1,5 @@
+bin/
+pkg/
+github.com/
+gopkg*/
+.vscode/

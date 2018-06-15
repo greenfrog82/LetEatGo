@@ -1,0 +1,71 @@
+version: "2"
+services:
+  backend-auth:
+    build:
+      context: .
+      dockerfile: ./misc/env-backend/Dockerfile
+    stdin_open: true
+    tty: true
+    ports:
+      - 7000:7000
+    volumes:
+      - ./src/backend/auth:/develop
+    networks:
+      my-net:
+        aliases: # 별명. 참고로하자.
+          - backend2
+    command: bash -c "./requirement.sh && cd src && ../bin/gin -p 7000 main.go"
+  backend-biz:
+    build:
+      context: .
+      dockerfile: ./misc/env-backend/Dockerfile
+    stdin_open: true
+    tty: true
+    ports:
+      - 7001:7001
+    volumes:
+      - ./src/backend/biz:/develop
+    networks:
+      - my-net
+    # https://stackoverflow.com/questions/30063907/using-docker-compose-how-to-execute-multiple-commands?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+    command: bash -c "./requirement.sh && cd src && ../bin/gin -p 7001 main.go"
+  frontend:
+    build:
+      context: .
+      dockerfile: ./misc/env-frontend/Dockerfile
+    stdin_open: true
+    tty: true
+    ports:
+      - 7002:7002
+    volumes:
+      - ./src/frontend:/develop
+    working_dir: /develop
+    networks:
+      - my-net
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_DB=leteatgo
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=qwer1234
+    volumes:
+      - ../postgres:/var/lib/postgresql
+    ports:
+      - "9432:5432"
+    networks:
+      - my-net
+  pgadmin4:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@foo.com
+      - PGADMIN_DEFAULT_PASSWORD=qwer1234
+    ports:
+      - "5555:80"
+    depends_on:
+      - postgres
+    networks:
+      - my-net
+networks:
+  my-net:
+    driver: bridge
+

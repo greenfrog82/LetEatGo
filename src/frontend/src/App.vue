@@ -3,7 +3,7 @@
     <v-app light>
       <v-toolbar class="white grey--text">
         <v-toolbar-title class="mr-5">
-          <v-btn flat to="/">HogeHoge</v-btn>
+          <v-btn flat to="/">LetEatGo</v-btn>
         </v-toolbar-title>
         <v-toolbar-items>
           <v-btn flat to="/shop">shop</v-btn>

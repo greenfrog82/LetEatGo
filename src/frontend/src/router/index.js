@@ -22,6 +22,6 @@ export default new Router({
       path: '/discount',
       name: 'Discount',
       component: Discount
-    },
+    }
   ]
 })

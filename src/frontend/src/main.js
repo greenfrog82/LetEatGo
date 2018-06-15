@@ -3,6 +3,28 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import Vuetify from 'vuetify'
+// [Begin] https://vuetifyjs.com/en/getting-started/quick-start
+// CSS of Vuetify.js
+import 'vuetify/dist/vuetify.min.css'
+// Material Design CSS
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
+// [End]
+// [Begin] https://fontawesome.com/how-to-use/use-with-node-js
+// Using 'Font Awesome'
+import fontawesome from '@fortawesome/fontawesome'
+import faUser from '@fortawesome/fontawesome-free-solid/faUser'
+import faCircle from '@fortawesome/fontawesome-free-regular/faCircle'
+import faGithub from '@fortawesome/fontawesome-free-brands/faGithub'
+
+fontawesome.library.add(faUser)
+fontawesome.library.add(faCircle)
+fontawesome.library.add(faGithub)
+
+Vue.use(fontawesome)
+// [End]
+// https://vuetifyjs.com/en/getting-started/quick-start
+Vue.use(Vuetify)
 
 Vue.config.productionTip = false
 

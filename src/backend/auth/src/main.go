@@ -53,7 +53,7 @@ func main() {
 	router.POST("/signup", signup(db))
 	router.POST("/login", login(db))
 
-	if err := http.ListenAndServe(":7000", router); err != nil {
+	if err := http.ListenAndServe(":3001", router); err != nil {
 		log.Fatal(err)
 	}
 }

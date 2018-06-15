@@ -8,6 +8,13 @@ yarn-error.log*
 /test/e2e/reports/
 selenium-debug.log
 
+# Go-lang
+bin/
+pkg/
+github.com/
+gopkg*/
+gin-bin
+
 # Editor directories and files
 .idea
 .vscode

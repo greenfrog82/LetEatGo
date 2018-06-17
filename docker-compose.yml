@@ -42,6 +42,7 @@ services:
     working_dir: /develop
     networks:
       - my-net
+    command: bash -c "npm run dev"
   postgres:
     image: postgres
     environment:

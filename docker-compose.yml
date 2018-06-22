@@ -9,12 +9,12 @@ services:
     ports:
       - 7000:7000
     volumes:
-      - ./src/backend/auth:/develop
+      - ./src/backend/auth:/develop/src/auth
     networks:
       my-net:
         aliases: # 별명. 참고로하자.
           - backend2
-    command: bash -c "./requirement.sh && cd src && ../bin/gin -p 7000 main.go"
+    command: bash -c "cd auth && gin -p 7000 main.go"
   backend-biz:
     build:
       context: .
@@ -24,11 +24,14 @@ services:
     ports:
       - 7001:7001
     volumes:
-      - ./src/backend/biz:/develop
+      - ./src/backend/biz/main:/develop/src/biz
+      - ./src/backend/biz/middlewares:/develop/src/middlewares
+      - ./src/backend/biz/routers:/develop/src/routers
     networks:
       - my-net
     # https://stackoverflow.com/questions/30063907/using-docker-compose-how-to-execute-multiple-commands?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
-    command: bash -c "./requirement.sh && cd src && ../bin/gin -p 7001 main.go"
+    #command: bash -c "./requirement.sh && cd src && ../bin/gin -p 7001 main.go"
+    command: bash -c "cd biz && gin -p 7001 main.go"
   frontend:
     build:
       context: .

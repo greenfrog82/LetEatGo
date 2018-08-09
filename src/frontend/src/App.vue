@@ -1,15 +1,21 @@
 <template>
   <div id="app">
     <v-app light>
-      <v-toolbar class="white grey--text">
-        <v-toolbar-title class="mr-5">
-          <v-btn flat to="/">HogeHoge</v-btn>
+      <!-- <v-toolbar class="white grey--text"> -->
+      <v-toolbar flat>
+        <v-toolbar-title>
+          <a href='/'>
+            <b class="black--text">LetEatGo</b>
+          </a>
         </v-toolbar-title>
+        <v-spacer></v-spacer>
         <v-toolbar-items>
           <v-btn flat to="/shop">shop</v-btn>
           <v-btn flat to="/discount">discount</v-btn>
+          <v-btn flat>
+            <v-icon size="24px">fas fa-user</v-icon>
+          </v-btn>
         </v-toolbar-items>
-        <!-- <v-toolbar-title v-text=title></v-toolbar-title> -->
       </v-toolbar>
       <v-content>
         <router-view/>
@@ -24,7 +30,7 @@
             <v-spacer></v-spacer>
             <span class="subheading">
               Let's contribute our code!
-              <v-btn icon dark class="mx-3">
+              <v-btn icon dark class="mx-3" href="https://github.com/greenfrog82/LetEatGo">
                 <v-icon size="24px">fab fa-github</v-icon>
               </v-btn>
             </span>

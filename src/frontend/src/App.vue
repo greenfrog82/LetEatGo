@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <v-app light>
-      <!-- <v-toolbar class="white grey--text"> -->
       <v-toolbar flat>
         <v-toolbar-title>
           <a href='/'>
